@@ -21,6 +21,13 @@ const NavBar = (props) => {
                 >
                   Log Out
                 </Link>
+                <li>
+                  <Link
+                  to ="/ShopServices"
+                  className ="nav-link active"
+                  > ShopServices
+                  </Link>
+                </li>
               </li>
             </ul>
           </div>

@@ -13,15 +13,15 @@ const DisplayService = (props) => {
   return (
     <React.Fragment>
       <h1>Services</h1>
-      <input
+      {/* <input
         placeholder="search..."
         onChange={(event) => setSearch(event.target.value)}
-      ></input>
-      <table className="table table-striped">
+      ></input> */}
+      <table responsive className="table table-striped">
         <thead>
           <tr></tr>
           <tr>
-            <th>Name</th>            
+            <th>Name</th>
             <th>Description</th>
             <th>Price</th>
           </tr>

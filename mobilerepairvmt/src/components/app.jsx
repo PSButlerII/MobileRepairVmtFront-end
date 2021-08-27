@@ -45,19 +45,19 @@ class App extends Component {
     } catch {}
   }
 
-  getAllReviews = async () => {
-    var res = await axios(`https://localhost:44394/api/review`);
-    return this.setState({
-      reviews: res.data,
-    });
-  };
+  // getAllReviews = async () => {
+  //   var res = await axios(`https://localhost:44394/api/review`);
+  //   return this.setState({
+  //     reviews: res.data,
+  //   });
+  // };
 
-  getReviewsbyId = async (merchid) => {
-    var res = await axios(`https://localhost:44394/api/review`, merchid);
-    return this.setState({
-      reviewsById: res.data,
-    });
-  };
+  // getReviewsbyId = async (merchid) => {
+  //   var res = await axios(`https://localhost:44394/api/review`, merchid);
+  //   return this.setState({
+  //     reviewsById: res.data,
+  //   });
+  // };
 
   getAllItems = async () => {
     var res = await axios(`https://localhost:44394/api/Products`);
@@ -75,16 +75,16 @@ class App extends Component {
     });
   };
 
-  getShoppingCart = async () => {
-    var res = await axios(
-      `https://localhost:44394/api/shoppingcart/3310cf10-8093-4a7b-84f3-327232cc5a7b`
-    );
-    var tempShoppingCart = res.data;
+  // getShoppingCart = async () => {
+  //   var res = await axios(
+  //     `https://localhost:44394/api/shoppingcart/3310cf10-8093-4a7b-84f3-327232cc5a7b`
+  //   );
+  //   var tempShoppingCart = res.data;
 
-    return this.setState({
-      shoppingCart: tempShoppingCart,
-    });
-  };
+  //   return this.setState({
+  //     shoppingCart: tempShoppingCart,
+  //   });
+  // };
 
   newUser = async (event) => {
     try {
@@ -176,6 +176,8 @@ class App extends Component {
         <NavBar isLoggedIn={this.state.isLoggedIn} />
         {this.state.isLoggedIn === false ? (
           <Switch>
+            <Route path="/" exact component={Home}></Route>
+            
             <Route
               path="/login"
               render={(props) => <Login {...props} getUser={this.getUser} />}
@@ -196,14 +198,8 @@ class App extends Component {
         ) : (
           <Switch>
             <Route path="/" exact component={Home}>
-              <DisplayProducts
-                items={this.state.items}
-               
-              />
-              <DisplayService
-                services={this.state.services}
-                
-              />             
+              <DisplayProducts items={this.state.items} />
+              <DisplayService services={this.state.services} />
             </Route>
             <Redirect to="not-found" />
           </Switch>

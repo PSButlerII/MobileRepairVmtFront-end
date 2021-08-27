@@ -5,7 +5,7 @@ import useForm from "../UseForm/useForm";
 const Register = (props) => {
   const { values, handleChange, handleSubmit } = useForm(create);
   const[willRedirect, setWillRedirect] = useState(false);
-  // const [redirect, setRedirect] = useState(false);
+
 
   function create() {
     props.newUser(values);
@@ -15,11 +15,11 @@ const Register = (props) => {
     
   }
 if(willRedirect===false){
-  return (    
+  return (
     <div>
       <div>
         <div className="row row-spacer">
-          <h1>PKCJJ Card Shop Register</h1>
+          <h1>Mobile Repair VMT</h1>
         </div>
 
         <form className="col-md-2" onSubmit={handleSubmit}>
@@ -98,6 +98,19 @@ if(willRedirect===false){
             {console.log(values.PhoneNumber)}
             <label for="floatingInput">Phone Number</label>
           </div>
+
+          <div className="form-floating">
+            <input
+              name="Address"
+              type="string"
+              className="form-control"
+              placeholder="32 marshal Rd., Rochester,NY 33333"
+              onChange={handleChange}
+              values={values.Address}
+            />
+            {console.log(values.Address)}
+            <label for="floatingInput">Address</label>
+          </div>
           <button className="w-10 btn btn-lg btn-primary" type="submit">
             REGISTER
           </button>
@@ -105,8 +118,6 @@ if(willRedirect===false){
         </form>
       </div>
     </div>
-    
-    
   );
 }
   else{
