@@ -4,17 +4,19 @@ import {
   BrowserRouter as Router,
   Redirect,
   Route,
-  Switch,
-  useHistory,
+  Switch,  
 } from "react-router-dom";
-import jwtDecode, {InvalidTokenError} from "jwt-decode";
+import jwtDecode from "jwt-decode";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Login/login";
 import NavBar from "./NavBar/navbar";
 import Register from "./Register/register";
 import Home from "./Home/home";
 import DisplayProducts from "./DisplayProducts/displayProducts";
-import DisplayService from './ShopServices/shopServices';
+import ShopServices from './ShopServices/shopServices';
+import Lti from './DisplayLTI/longFormLti';
+import ProfileView from '../Profile/myProfile';
+import Calendar from './Calendar/calendar';
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +24,8 @@ class App extends Component {
     localStorage.removeItem("token");
     super(props);
     this.state = {
-      user: "",
+      user: [],
+      userInfo: [],
       shoppingCart: [],
       items: [],
       services: [],
@@ -31,6 +34,7 @@ class App extends Component {
       reviewsById: [],
       redirect: null,
       isLoggedIn: false,
+      Lti: [],
     };
   }
   componentDidMount() {
@@ -109,7 +113,8 @@ class App extends Component {
     console.log(res.data.token);
     this.getUserInfo();
     this.setState({
-      user: res.data,
+      user: [res.data],
+      userInfo: [res.data],
       isLoggedIn: true,
     });
     console.log(res.data);
@@ -124,48 +129,70 @@ class App extends Component {
     console.log(response.data);
     this.setState({
       userid: response.data.id,
+      // userInfo:response.data
+    });
+  };
+  getAllLtis = async (event) => {
+    var res = await axios(`https://localhost:44394/api/customerLTI`);
+    var tempLTI = res.data;
+    return this.setState({
+      Lti: [tempLTI],
     });
   };
 
-//   addReview = async (review) => {
-//     const jwt = localStorage.getItem("token");
-//     const res = await axios
-//       .post(`https://localhost:44394/api/review`, review, {
-//         headers: { Authorization: "Bearer " + jwt },
-//       })
-//       .then((res) => {
-//         console.log(res);
-//       })
-//       .catch((err) => console.log(err));
-//   };
+  createCustomerLti = async (event) => {
+    const jwt = localStorage.getItem("token");
+    try {
+      var res = await axios.post(
+        `https://localhost:44394/api/customerLTI`,
+        event, { headers: { Authorization: "Bearer " + jwt } }
+      );
+      console.log(res);
+      return res.status;
+    } catch (err) {
+      alert(err);
+    }
+  };
 
-//   addToCart = async (cart) => {
-//     const jwt = localStorage.getItem("token");
-//     let response = await axios
-//       .post("https://localhost:44394/api/shoppingcart", cart, {
-//         headers: { Authorization: "Bearer " + jwt },
-//       })
-//       .then((res) => {
-//         console.log(res);
-//       })
-//       .catch((err) => alert("Already in your cart."));
+  //   addReview = async (review) => {
+  //     const jwt = localStorage.getItem("token");
+  //     const res = await axios
+  //       .post(`https://localhost:44394/api/review`, review, {
+  //         headers: { Authorization: "Bearer " + jwt },
+  //       })
+  //       .then((res) => {
+  //         console.log(res);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   };
 
-//     if (response === undefined) {
-//       this.setState({});
-//     } else {
-//       this.setState({
-//         cart: response.data,
-//       });
-//     }
-//   };
+  //   addToCart = async (cart) => {
+  //     const jwt = localStorage.getItem("token");
+  //     let response = await axios
+  //       .post("https://localhost:44394/api/shoppingcart", cart, {
+  //         headers: { Authorization: "Bearer " + jwt },
+  //       })
+  //       .then((res) => {
+  //         console.log(res);
+  //       })
+  //       .catch((err) => alert("Already in your cart."));
 
-//   deleteFromCart = async (id) => {
-//     try {
-//       await axios.delete(`https://localhost:44394/api/cart/remove/${id}/`);
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
+  //     if (response === undefined) {
+  //       this.setState({});
+  //     } else {
+  //       this.setState({
+  //         cart: response.data,
+  //       });
+  //     }
+  //   };
+
+  //   deleteFromCart = async (id) => {
+  //     try {
+  //       await axios.delete(`https://localhost:44394/api/cart/remove/${id}/`);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
 
   logoutUser = async (event) => {
     localStorage.removeItem("token");
@@ -176,12 +203,7 @@ class App extends Component {
         <NavBar isLoggedIn={this.state.isLoggedIn} />
         {this.state.isLoggedIn === false ? (
           <Switch>
-            <Route
-              path="/"
-              exact
-              component={Home}
-              services={this.state.services}
-            ></Route>
+            <Route path="/" exact component={Home}></Route>
 
             <Route
               path="/login"
@@ -204,8 +226,24 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Home}>
               <DisplayProducts items={this.state.items} />
-              <DisplayService services={this.state.services} />
             </Route>
+            <Route
+              path="/ShopServices"
+              render={(props) => (
+                <ShopServices {...props} services={this.state.services} />
+              )}
+            />
+            <Route
+              path="/LTI" render={(props) => ( <Lti {...props} createCustomerLti={this.createCustomerLti}/>)}/>
+            <Route
+              path="/Profile"
+              render={(props) => (
+                <ProfileView {...props} user={this.state.userInfo} />
+              )}
+            />
+            <Route path="/Schedule" component={Calendar} />
+
+            <Route />
             <Redirect to="not-found" />
           </Switch>
         )}

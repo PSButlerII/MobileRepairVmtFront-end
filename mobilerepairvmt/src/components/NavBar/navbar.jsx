@@ -14,6 +14,31 @@ const NavBar = (props) => {
           <div className="container-fluid">
             <ul className="navbar-nav  ">
               <li className="nav-item">
+                <Link to="/" className="nav-link active">
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/ShopServices" className="nav-link active">
+                  ShopServices
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/LTI" className="nav-link active">
+                  LTI's
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/Profile" className="nav-link active">
+                  Profile
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/Schedule" className="nav-link active">
+                  Schedule
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link
                   to="/login"
                   className="nav-link active"
@@ -21,13 +46,6 @@ const NavBar = (props) => {
                 >
                   Log Out
                 </Link>
-                <li>
-                  <Link
-                  to ="/ShopServices"
-                  className ="nav-link active"
-                  > ShopServices
-                  </Link>
-                </li>
               </li>
             </ul>
           </div>
