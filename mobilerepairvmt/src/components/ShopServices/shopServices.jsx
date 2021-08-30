@@ -13,10 +13,7 @@ const DisplayService = (props) => {
   return (
     <React.Fragment>
       <h1>Services</h1>
-      {/* <input
-        placeholder="search..."
-        onChange={(event) => setSearch(event.target.value)}
-      ></input> */}
+      
       <table responsive className="table table-striped">
         <thead>
           <tr></tr>
@@ -35,9 +32,9 @@ const DisplayService = (props) => {
                 <td>{service.description}</td>
                 <td>${service.price}</td>
                 <td>
-                  <button onClick={() => props.addToCart(service)}>
+                  {/* <button onClick={() => props.addToCart(service)}>
                     Add to Cart
-                  </button>
+                  </button> */}
                 </td>
                 <td></td>
               </tr>

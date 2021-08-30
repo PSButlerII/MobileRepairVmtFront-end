@@ -5,9 +5,12 @@ const Home = () => {
   return (
     <React.Fragment>
       <div>
-          
-        <h1>Home</h1>
+        <h1> MOBILE REPAIR VMT</h1>
       </div>
+      <p>
+        WELCOME TO MOBILE VMT. WERE YOU CAN CHOOSE TO DIY, OR HAVE OUR SERVICE
+        DO THE DIRTY WORK FOR YOU.
+      </p>
       <div
         style={{
           display: "flex",
@@ -23,9 +26,8 @@ const Home = () => {
             height: "19vh",
           }}
         >
-          
-          <h2>picture or something</h2>
-          <img src="images/scooters.jpg" />
+          <h2></h2>
+          <img src="images/scooters.jpg" alt="scooters" />
         </div>
         <div
           style={{
@@ -34,7 +36,7 @@ const Home = () => {
             height: "40vh",
           }}
         >
-          <h2>Reviews***</h2>
+          <h2>Calendar</h2>
         </div>
         <div
           style={{
@@ -43,7 +45,7 @@ const Home = () => {
             height: "10vh",
           }}
         >
-          <h2>Product***</h2>
+          <h2>Product</h2>
         </div>
         <div
           style={{
@@ -52,7 +54,7 @@ const Home = () => {
             height: "40vh",
           }}
         >
-          <h2>Service***</h2>
+          <h2>Service</h2>
         </div>
         <div
           style={{
@@ -61,7 +63,7 @@ const Home = () => {
             height: "10vh",
           }}
         >
-          <h2>Contact***</h2>
+          <h2>LTI Form</h2>
         </div>
       </div>
     </React.Fragment>
