@@ -13,10 +13,10 @@ const DisplayProducts = (props) => {
   return (
     <React.Fragment>
       <h1>Parts and Products List</h1>
-      <input
+      {/* <input
         placeholder="search..."
         onChange={(event) => setSearch(event.target.value)}
-      ></input>
+      ></input> */}
       <table className="table table-striped">
         <thead>
           <tr></tr>

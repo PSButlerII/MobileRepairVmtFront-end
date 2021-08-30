@@ -1,0 +1,65 @@
+/* Style the form - display items horizontally */
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    text-align: center;
+    align-self: center;
+    justify-content: center;  
+  }
+  
+  /* Add some margins for each label */
+  .form-inline label {
+    margin: 5px 10px 5px 0;
+  }
+  
+  /* Style the input fields */
+  .form-inline input {
+    vertical-align: middle;
+    align-items: center;
+    margin: 5px 10px 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .form-inline select {
+    vertical-align: middle;
+    align-items: center;
+    margin: 5px 10px 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+
+  /* Style the submit button */
+  .form-inline button {
+    padding: 10px 20px;
+    background-color: gray;
+    color: ghostwhite;
+    border-radius: 4px;
+  }
+  
+  .form-inline button:hover {
+    background-color: royalblue;
+  }
+  
+  .center {
+      margin: auto;         
+      padding: 10px;
+    }
+  
+  /* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
+  @media (max-width: 800px) {
+    .form-inline input {
+      margin: 10px 0;
+    }
+  
+    .form-inline {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }

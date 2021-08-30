@@ -36,7 +36,7 @@ class App extends Component {
   componentDidMount() {
     this.getAllItems();
     this.getAllServices();
-    
+    this.getAllReviews();
     const jwt = localStorage.getItem("token");
     try {
       const user = jwtDecode(jwt);
@@ -45,19 +45,19 @@ class App extends Component {
     } catch {}
   }
 
-  // getAllReviews = async () => {
-  //   var res = await axios(`https://localhost:44394/api/review`);
-  //   return this.setState({
-  //     reviews: res.data,
-  //   });
-  // };
+  getAllReviews = async () => {
+    var res = await axios(`https://localhost:44394/api/review`);
+    return this.setState({
+      reviews: res.data,
+    });
+  };
 
-  // getReviewsbyId = async (merchid) => {
-  //   var res = await axios(`https://localhost:44394/api/review`, merchid);
-  //   return this.setState({
-  //     reviewsById: res.data,
-  //   });
-  // };
+  getReviewsbyId = async (merchid) => {
+    var res = await axios(`https://localhost:44394/api/review`, merchid);
+    return this.setState({
+      reviewsById: res.data,
+    });
+  };
 
   getAllItems = async () => {
     var res = await axios(`https://localhost:44394/api/Products`);
@@ -176,8 +176,13 @@ class App extends Component {
         <NavBar isLoggedIn={this.state.isLoggedIn} />
         {this.state.isLoggedIn === false ? (
           <Switch>
-            <Route path="/" exact component={Home}></Route>
-            
+            <Route
+              path="/"
+              exact
+              component={Home}
+              services={this.state.services}
+            ></Route>
+
             <Route
               path="/login"
               render={(props) => <Login {...props} getUser={this.getUser} />}
