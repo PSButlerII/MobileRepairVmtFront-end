@@ -1,14 +1,14 @@
 import React from "react";
 
-import { useState } from "react";
+
 
 const DisplayService = (props) => {
-  const [search, setSearch] = useState("");
+  
   const filterServices = props.services.filter(
     (services) =>
-      services.name.toLowerCase().includes(search.toLowerCase()) ||
-      services.description.toLowerCase().includes(search.toLowerCase()) ||
-      services.price.toLowerCase().includes(search.toLowerCase())
+      services.name.toLowerCase() ||
+      services.description.toLowerCase()||
+      services.price.toLowerCase()
   );
   return (
     <React.Fragment>

@@ -17,6 +17,9 @@ import ShopServices from './ShopServices/shopServices';
 import Lti from './DisplayLTI/longFormLti';
 import ProfileView from '../Profile/myProfile';
 import Calendar from './Calendar/calendar';
+import "./app.css";
+import Lobby from './ChatBot/lobby';
+import {HubConnectionBuilder, LogLevel} from '@microsoft/signalr';
 
 class App extends Component {
   constructor(props) {
@@ -35,12 +38,14 @@ class App extends Component {
       redirect: null,
       isLoggedIn: false,
       Lti: [],
+      
     };
   }
   componentDidMount() {
     this.getAllItems();
     this.getAllServices();
     this.getAllReviews();
+    
     const jwt = localStorage.getItem("token");
     try {
       const user = jwtDecode(jwt);
@@ -153,7 +158,30 @@ class App extends Component {
       alert(err);
     }
   };
+  
+ joinRoom = async(user, room)=>{
+   try{
+     
+     const jwt = localStorage.getItem("token");
+     const connection = new HubConnectionBuilder()
+     .withUrl ("https://localhost:44394/api/chatHub")
+     .configureLogging(LogLevel.Information)    
+     .build();
 
+     connection.on("ReceiveMessage", (user, message)=>{
+       console.log('message received:', message);
+     });
+     await connection.start();
+     await connection.invoke("JoinRoom", {user,room});
+     return this.setState({
+       connection
+     });
+
+   }catch(e){
+     console.log(e);
+
+   }
+ };
   //   addReview = async (review) => {
   //     const jwt = localStorage.getItem("token");
   //     const res = await axios
@@ -242,6 +270,7 @@ class App extends Component {
               )}
             />
             <Route path="/Schedule" component={Calendar} />
+            <Route path="/chatHub" render= {(props) =>(<Lobby {...props} joinRoom={this.joinRoom}/>)}/>
 
             <Route />
             <Redirect to="not-found" />

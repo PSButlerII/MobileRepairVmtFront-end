@@ -1,14 +1,15 @@
 import React from "react";
 
-import { useState } from "react";
+
 
 const DisplayProducts = (props) => {
-  const [search, setSearch] = useState("");
+  
   const filterItems = props.items.filter(
     (items) =>
-      items.name.toLowerCase().includes(search.toLowerCase()) ||
-      items.description.toLowerCase().includes(search.toLowerCase()) ||
-      items.category.toLowerCase().includes(search.toLowerCase())
+    items.ProductId||
+      items.name.toLowerCase() ||
+      items.description.toLowerCase() ||
+      items.category.toLowerCase()
   );
   return (
     <React.Fragment>
@@ -35,9 +36,9 @@ const DisplayProducts = (props) => {
                 <td>{item.description}</td>
                 <td>${item.price}</td>
                 <td>
-                  <button onClick={() => props.addToCart(item)}>
+                  {/* <button onClick={() => props.addToCart(item)}>
                     Add to Cart
-                  </button>
+                  </button> */}
                 </td>
                 <td>                  
                 </td>

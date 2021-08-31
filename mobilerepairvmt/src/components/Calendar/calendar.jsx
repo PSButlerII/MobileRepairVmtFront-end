@@ -7,7 +7,7 @@ const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
   const header = () => {
-    const dateFormat = "mm yyyy";
+    const dateFormat = "mmmm yyyy";
     return (
       <div className="header row flex-middle">
         <div className="column col-start">

@@ -26,7 +26,7 @@ const Home = () => {
             height: "19vh",
           }}
         >
-          <h2></h2>
+          
           <img src="images/scooters.jpg" alt="scooters" />
         </div>
         <div

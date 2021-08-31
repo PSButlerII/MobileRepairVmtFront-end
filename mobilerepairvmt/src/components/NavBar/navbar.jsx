@@ -39,6 +39,11 @@ const NavBar = (props) => {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link to="/chatHub" className="nav-link active">
+                  ChatHub
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link
                   to="/login"
                   className="nav-link active"
