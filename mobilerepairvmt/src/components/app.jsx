@@ -38,6 +38,7 @@ class App extends Component {
       redirect: null,
       isLoggedIn: false,
       Lti: [],
+      connection:null
       
     };
   }
@@ -119,7 +120,7 @@ class App extends Component {
     this.getUserInfo();
     this.setState({
       user: [res.data],
-      userInfo: [res.data],
+      
       isLoggedIn: true,
     });
     console.log(res.data);
@@ -158,11 +159,9 @@ class App extends Component {
       alert(err);
     }
   };
-  
  joinRoom = async(user, room)=>{
    try{
      
-     const jwt = localStorage.getItem("token");
      const connection = new HubConnectionBuilder()
      .withUrl ("https://localhost:44394/api/chatHub")
      .configureLogging(LogLevel.Information)    
@@ -173,8 +172,8 @@ class App extends Component {
      });
      await connection.start();
      await connection.invoke("JoinRoom", {user,room});
-     return this.setState({
-       connection
+     this.setState({
+       connection:connection
      });
 
    }catch(e){
