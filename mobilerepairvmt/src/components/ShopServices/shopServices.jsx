@@ -10,6 +10,7 @@ const DisplayService = (props) => {
       services.description.toLowerCase()||
       services.price.toLowerCase()
   );
+  console.log(filterServices);
   return (
     <React.Fragment>
       <h1>Services</h1>

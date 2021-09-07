@@ -13,17 +13,19 @@ import Login from "./Login/login";
 import NavBar from "./NavBar/navbar";
 import Register from "./Register/register";
 import Home from "./Home/home";
-import DisplayProducts from "./DisplayProducts/displayProducts";
-import ShopServices from "./ShopServices/shopServices";
+import DisplayService from "./ShopServices/shopServices";
 import Lti from "./DisplayLTI/longFormLti";
 import ProfileView from "./Customer Profile/myProfile";
 import Calendar from "./Calendar/calendar";
 import "./app.css";
-import Notify from "./ChatBot/notify";
 import ItemCard from "./shoppingCart/ItemCard";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
 import ReviewForm from "./reviewForm/reviewForm";
 import MapView from "./Maps/MapView";
+import Chat from "./ChatBot/Chat/Chat";
+import Join from "./ChatBot/Join/Join"
+
+
 
 class App extends Component {
   constructor(props) {
@@ -102,7 +104,7 @@ class App extends Component {
   };
 
   getAllServices = async () => {
-    var res = await axios(`https://localhost:44394/api/ShopService/`);
+    var res = await axios(`https://localhost:44394/api/ShopService`);
     var tempService = res.data;
     return this.setState({
       services: tempService,
@@ -264,7 +266,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        {console.log(this.state.shoppingCart)}
+        {console.log(this.state.services)}
         <NavBar
           isLoggedIn={this.state.isLoggedIn}
           shoppingCart={this.state.shoppingCart}
@@ -301,13 +303,13 @@ class App extends Component {
         ) : (
           <Switch>
             <Route path="/" exact component={Home}>
-              <DisplayProducts items={this.state.items} />
-              
+              {/* <DisplayProducts items={this.state.items} /> */}
+              <ItemCard items={this.state.items} addToCart={this.addToCart} />
             </Route>
             <Route
               path="/ShopServices"
               render={(props) => (
-                <ShopServices {...props} services={this.state.services} />
+                <DisplayService {...props} services={this.state.services} />
               )}
             />
             {this.state.ownerStatus === false ? (
@@ -357,10 +359,13 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/Maps" >
-              <MapView />            
+            <Route path="/Maps">
+              <MapView />
             </Route>
-            
+            <Router>
+              <Route path="/join" exact component={Join} />
+              <Route path="/chat" component={Chat} />
+            </Router>
             <Route
               path="/ServiceReview"
               render={(props) => (

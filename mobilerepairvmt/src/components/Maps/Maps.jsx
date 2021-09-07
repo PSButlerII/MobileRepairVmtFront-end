@@ -79,12 +79,7 @@ class Map extends Component {
       return false;
     }
   }
-  /**
-   * Get the city and set the city input value to the one selected
-   *
-   * @param addressArray
-   * @return {string}
-   */
+
   getCity = (addressArray) => {
     let city = "";
     for (let i = 0; i < addressArray.length; i++) {
@@ -97,12 +92,7 @@ class Map extends Component {
       }
     }
   };
-  /**
-   * Get the area and set the area input value to the one selected
-   *
-   * @param addressArray
-   * @return {string}
-   */
+
   getArea = (addressArray) => {
     let area = "";
     for (let i = 0; i < addressArray.length; i++) {
@@ -121,10 +111,8 @@ class Map extends Component {
   };
   /**
    * Get the address and set the address input value to the one selected
-   *
-   * @param addressArray
-   * @return {string}
    */
+   
   getState = (addressArray) => {
     let state = "";
     for (let i = 0; i < addressArray.length; i++) {
