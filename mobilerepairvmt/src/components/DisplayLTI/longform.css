@@ -1,0 +1,26 @@
+.top-left{
+   float:inline-start;
+   
+   margin-right:2%;
+   
+   
+
+}
+
+.top-center{
+ 
+   float:inline-end;
+    text-align: left;
+
+}
+
+.top-right{
+
+float:inherit;
+    
+   margin-right:2%;
+   text-align: center;
+
+
+
+}

@@ -1,23 +1,19 @@
 import React from "react";
 
-
+import { useState } from "react";
 
 const DisplayProducts = (props) => {
   
   const filterItems = props.items.filter(
     (items) =>
-    items.ProductId||
       items.name.toLowerCase() ||
       items.description.toLowerCase() ||
-      items.category.toLowerCase()
+      items.price.toLowerCase()
   );
   return (
     <React.Fragment>
       <h1>Parts and Products List</h1>
-      {/* <input
-        placeholder="search..."
-        onChange={(event) => setSearch(event.target.value)}
-      ></input> */}
+      
       <table className="table table-striped">
         <thead>
           <tr></tr>
@@ -36,9 +32,9 @@ const DisplayProducts = (props) => {
                 <td>{item.description}</td>
                 <td>${item.price}</td>
                 <td>
-                  {/* <button onClick={() => props.addToCart(item)}>
+                  <button onClick={() => props.addToCart(item)}>
                     Add to Cart
-                  </button> */}
+                  </button>
                 </td>
                 <td>                  
                 </td>

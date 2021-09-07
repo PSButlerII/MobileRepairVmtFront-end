@@ -1,74 +1,57 @@
-import React, { Component } from 'react';
+import React from 'react';
+import useForm from '../UseForm/useForm';
 import './reviewForm.css'
 
 
 
-class ReviewForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: false,
-            userid:"", 
-            merchid: 2,
-            userreview: '',
-            rating: ''
-        }          
-          this.handleChange= this.handleChange.bind(this);
-          this.handleSubmit= this.handleSubmit.bind(this);
-    }
+const ReviewForm = (props) => {
+const {handleChange, handleSubmit,values}= useForm(); 
 
+    const review = {
+      userid: props.users.id,
+      serviceId: props.services.ShopServiceIdId,
+      userreview: props.userreview,
+      rating: parseInt(props.rating),
+    };
+    console.log(review);
+    
 
+  
+    return (
+      <div className="center">
+        <form className="form-inline" onSubmit={handleSubmit}>
+          <h2>Add Review</h2>
+          <br />
+          <div className="form-group">
+            <input
+              type="text"
+              name="userreview"
+              placeholder="Review this item"
+              onChange={handleChange}
+              value={values.userreview}
+            />
 
-    // need to add logic to pass merchid into form along with user input
-     
+            <select
+              className="custom-select custom-select-lg"
+              value={values.rating}
+              type="text"
+              name="rating"
+              onChange={handleChange}
+            >
+              <option>Star Rating</option>
+              <option value="1">1-Unsatisfactory</option>
+              <option value="2">2-Poor</option>
+              <option value="3">3-Acceptable</option>
+              <option value="4">4-Above Average</option>
+              <option value="5">5-Excellent</option>
+            </select>
+          </div>
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        
-        const review = {
-            userid: this.state.userid,
-            merchid: this.state.merchid,
-            userreview: this.state.userreview,            
-            rating: parseInt(this.state.rating)
-        }
-        
-        console.log(review)
-        this.addReview(review);
-    }
+          <button type="submit"> Submit </button>
+        </form>
+      </div>
+    );
+  }
 
-
-    render() { 
-        return (
-             
-        <div className="center">
- 
-        <form className="form-inline" onSubmit={this.handleSubmit}>
-        <h2>Add Review</h2>
-        <br />
-        <div className="form-group">
-        
-        <input
-          type="text"
-          name="userreview"
-          placeholder="Review this item"
-          onChange={this.handleChange}
-          value={this.state.userreview}
-        />
-             
-                <select className="custom-select custom-select-lg" value={this.state.rating} type="text" name="rating" onChange={this.handleChange}>
-                    <option>Star Rating</option>
-                    <option value="1">1-Unsatisfactory</option>
-                    <option value="2">2-Poor</option>
-                    <option value="3">3-Acceptable</option>
-                    <option value="4">4-Above Average</option>
-                    <option value="5">5-Excellent</option>
-                </select>
-            </div> 
-
-        <button type="submit"> Submit </button>
-      </form>
-</div> );
-    }
-}
  
 export default ReviewForm;

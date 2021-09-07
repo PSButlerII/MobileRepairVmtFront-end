@@ -1,0 +1,21 @@
+import React from "react";
+
+
+const ProfileScreen = ({ cartItem, deleteFromCart, index }) => {
+  
+  return (
+    <React.Fragment>
+         <tr key={user.id}>
+        <td>{user.firstName}</td>
+        <td>{user.lastName}</td>
+        <td>{user.address}</td>
+        <td>{user.email}</td>
+        <td>{user.phoneNumer}</td>
+        <td></td>
+      </tr>
+    </React.Fragment>
+  );
+};
+
+export default ProfileScreen;
+

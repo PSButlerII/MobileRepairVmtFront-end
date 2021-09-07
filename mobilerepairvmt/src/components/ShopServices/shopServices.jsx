@@ -32,9 +32,9 @@ const DisplayService = (props) => {
                 <td>{service.description}</td>
                 <td>${service.price}</td>
                 <td>
-                  {/* <button onClick={() => props.addToCart(service)}>
+                  <button onClick={() => props.addToCart(service)}>
                     Add to Cart
-                  </button> */}
+                  </button>
                 </td>
                 <td></td>
               </tr>

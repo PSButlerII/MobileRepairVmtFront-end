@@ -1,0 +1,62 @@
+this.state.shoppingCart.push(item);
+    let tempCart = this.state.shoppingCart;
+    this.setState({
+      shoppingCart: tempCart,
+    });
+
+    router.push("/chathub");
+    const ProductIds = [1, 2, 3, 4, 5, 6];
+    let cart = this.state.shoppingCart;
+
+    for (let i = 0; i < cart.length; i++) {
+      for (let j = 0; j < ProductIds.length; j++) {
+        if (cart[i] === ProductIds[j]) {
+          this.state.items[j].count++;
+        }
+      }
+    }
+
+    let allItems = this.state.items;
+    
+    let allCarts = [];
+
+    //
+    // length = allItems...[{...},{...}]
+
+    for (let  k = 0; k < allItems; k++) {
+      allCarts.push({
+        quantity: allItems[k].count,
+        userId: this.state.userInfo,
+        user: this.state.users,
+        productShoppingCartId: allItems[k].productId,
+      });
+    }
+
+    const jwt = localStorage.getItem("token");
+
+    allCarts.map((cart) => {
+      axios
+        .post("https://localhost:44394/api/shoppingcart", cart, {
+          headers: { Authorization: "Bearer " + jwt },
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => alert("Already in your cart."));
+    });
+
+    //       {
+    //     "quantity": 0,
+    //     "userId": "98775e77-bf92-4978-b843-1d394fb0c939",
+    //     "user": null,
+    //     "productShoppingCartId": 0,
+    //     "serviceShoppingCartId": 0
+    // }
+  //   if (response === undefined) {
+  //     this.setState({});
+  //   } else {
+  //     this.setState({
+  //       cart: response.data,
+  //     });
+  //   }
+  };

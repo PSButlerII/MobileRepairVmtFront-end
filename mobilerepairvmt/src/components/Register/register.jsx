@@ -5,12 +5,18 @@ import useForm from "../UseForm/useForm";
 const Register = (props) => {
   const { values, handleChange, handleSubmit } = useForm(create);
   const[willRedirect, setWillRedirect] = useState(false);
+  const[ownerStatus, setOwnerStatus] = useState(false);
 
+function handleCheckbox(){  
+  setOwnerStatus(!ownerStatus);
+  console.log(handleCheckbox);
+}
 
   function create() {
     props.newUser(values);
     console.log(values);
-    setWillRedirect(true);    
+    setWillRedirect(true);
+    setOwnerStatus(true);    
     
     
   }
@@ -89,7 +95,7 @@ if(willRedirect===false){
           <div className="form-floating">
             <input
               name="PhoneNumber"
-              type="string"
+              type="tel"             
               className="form-control"
               placeholder="555-555-5555"
               onChange={handleChange}
@@ -102,7 +108,7 @@ if(willRedirect===false){
           <div className="form-floating">
             <input
               name="Address"
-              type="string"
+              type="String"
               className="form-control"
               placeholder="32 marshal Rd., Rochester,NY 33333"
               onChange={handleChange}
@@ -111,9 +117,23 @@ if(willRedirect===false){
             {console.log(values.Address)}
             <label for="floatingInput">Address</label>
           </div>
-          <button className="w-10 btn btn-lg btn-primary" type="submit">
-            REGISTER
-          </button>
+          <div className="form-floating">
+            <input
+              Id="flexCheckChecked"
+              type="checkbox"
+              className="form-check-input"
+              onChange={handleCheckbox}
+            />
+
+            <label for="floatingInput">Register As Owner?</label>
+          </div>
+          <br></br>
+          <div>
+            <button className="w-10 btn btn-lg btn-primary" type="submit">
+              REGISTER
+            </button>
+          </div>
+
           <p className="mt-5 mb-3 text-muted">© 2021</p>
         </form>
       </div>
