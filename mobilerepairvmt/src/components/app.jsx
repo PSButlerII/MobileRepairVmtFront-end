@@ -339,8 +339,7 @@ class App extends Component {
             />
             <Route path="/Schedule" component={Calendar} />
 
-           
-            <Route
+           <Route
               path="/ShoppingCart"
               render={(props) => (
                 <ShoppingCart
