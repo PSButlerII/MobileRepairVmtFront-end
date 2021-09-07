@@ -44,11 +44,7 @@ const NavBar = (props) => {
                   Schedule
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/chatHub" className="nav-link active">
-                  ChatHub
-                </Link>
-              </li>
+              
               <li className="nav-item">
                 <Link to="/ShoppingCart" className="cart-link">
                   <i className="fas fa-shopping-cart"></i>

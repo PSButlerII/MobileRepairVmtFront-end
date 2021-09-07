@@ -339,16 +339,7 @@ class App extends Component {
             />
             <Route path="/Schedule" component={Calendar} />
 
-            <Route
-              path="/chatHub"
-              render={(props) => (
-                <ItemCard
-                  {...props}
-                  items={this.state.items}
-                  addToCart={this.addToCart}
-                />
-              )}
-            />
+           
             <Route
               path="/ShoppingCart"
               render={(props) => (
