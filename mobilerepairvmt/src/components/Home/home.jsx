@@ -1,16 +1,15 @@
 import React from "react";
 
-
 const Home = () => {
   return (
     <React.Fragment>
       <div>
         <h1> MOBILE REPAIR VMT</h1>
       </div>
-      <p>
+      <h5>
         WELCOME TO MOBILE VMT. WERE YOU CAN CHOOSE TO DIY, OR HAVE OUR SERVICE
         DO THE DIRTY WORK FOR YOU.
-      </p>
+      </h5>
       <div
         style={{
           display: "flex",
@@ -26,7 +25,6 @@ const Home = () => {
             height: "19vh",
           }}
         >
-          
           <img src="images/scooters.jpg" alt="scooters" />
         </div>
         <div
@@ -45,7 +43,7 @@ const Home = () => {
             height: "10vh",
           }}
         >
-          <h2>Product</h2>
+          <h2>Products</h2>
         </div>
         <div
           style={{
@@ -54,7 +52,7 @@ const Home = () => {
             height: "40vh",
           }}
         >
-          <h2>Service</h2>
+          <h2>Services</h2>
         </div>
         <div
           style={{
@@ -64,6 +62,15 @@ const Home = () => {
           }}
         >
           <h2>LTI Form</h2>
+        </div>
+        <div
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            height: "40vh",
+          }}
+        >
+          <h2>Chat</h2>
         </div>
       </div>
     </React.Fragment>

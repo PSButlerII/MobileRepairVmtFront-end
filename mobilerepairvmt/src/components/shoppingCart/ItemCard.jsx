@@ -6,7 +6,7 @@ const ItemCard = ({ items, addToCart }) => {
   return (
     <React.Fragment>
       {console.log(items)}
-      <div className="card 1">
+      <div className="card-group">
         {items?.map((item) => (
           <React.Fragment key={item.ProductId}>
             <ItemMap item={item} addToCart={addToCart}/>
