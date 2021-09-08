@@ -22,10 +22,7 @@ import ItemCard from "./shoppingCart/ItemCard";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
 import ReviewForm from "./reviewForm/reviewForm";
 import MapView from "./Maps/MapView";
-import Chat from "./ChatBot/Chat/Chat";
-import Join from "./ChatBot/Join/Join"
-
-
+import MainChatApp from "./ChatBox/MainChatApp";
 
 class App extends Component {
   constructor(props) {
@@ -48,7 +45,6 @@ class App extends Component {
       Lti: [],
       CustomerLti: [],
       allUsers: [],
-      
     };
   }
   componentDidMount() {
@@ -218,7 +214,7 @@ class App extends Component {
       shoppingCart: tempCart,
     });
 
-    router.push("/chathub");
+    router.push("/ShoppingCart");
 
     // const jwt = localStorage.getItem("token");
     // let response = await axios
@@ -308,13 +304,19 @@ class App extends Component {
             </Route>
             <Route
               path="/ShopServices"
+              exact
               render={(props) => (
-                <DisplayService {...props} services={this.state.services} />
+                <DisplayService
+                  {...props}
+                  services={this.state.services}
+                  addToCart={this.addToCart}
+                />
               )}
             />
             {this.state.ownerStatus === false ? (
               <Route
                 path="/CreateLTI"
+                exact
                 render={(props) => (
                   <Lti {...props} createCustomerLti={this.createCustomerLti} />
                 )}
@@ -322,6 +324,7 @@ class App extends Component {
             ) : (
               <Route
                 path="/CreateEmployeeLTI"
+                exact
                 render={(props) => (
                   <Lti {...props} createEmployeeLti={this.createEmployeeLti} />
                 )}
@@ -329,6 +332,7 @@ class App extends Component {
             )}
             <Route
               path="/Profile"
+              exact
               render={(props) => (
                 <ProfileView
                   {...props}
@@ -337,10 +341,11 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/Schedule" component={Calendar} />
+            <Route path="/Schedule" exact component={Calendar} />
 
-           <Route
+            <Route
               path="/ShoppingCart"
+              exact
               render={(props) => (
                 <ShoppingCart
                   {...props}
@@ -349,15 +354,16 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/Maps">
+            <Route path="/Maps" exact>
               <MapView />
             </Route>
             <Router>
-              <Route path="/join" exact component={Join} />
-              <Route path="/chat" component={Chat} />
+              <Route path="/Help" exact />
+              <MainChatApp />
             </Router>
-            <Route
+            {/* <Route
               path="/ServiceReview"
+              exact
               render={(props) => (
                 <ReviewForm
                   {...props}
@@ -366,7 +372,7 @@ class App extends Component {
                   users={this.state.userInfo}
                 />
               )}
-            />
+            /> */}
             <Redirect to="not-found" />
           </Switch>
         )}
@@ -374,6 +380,5 @@ class App extends Component {
     );
   }
 }
-
 
 export default App;

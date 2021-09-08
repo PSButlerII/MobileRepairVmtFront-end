@@ -29,11 +29,11 @@ const NavBar = (props) => {
                   LTI's
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to="/MyLTI" className="nav-link active">
                   My LTI's
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link to="/Profile" className="nav-link active">
                   Profile
@@ -56,18 +56,18 @@ const NavBar = (props) => {
                   </span>
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to="/ServiceReview" className="nav-link active">
                   Reviews
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link to="/Maps" className="nav-link active">
                   Maps
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/Join" className="nav-link active">
+                <Link to="/Help" className="nav-link active">
                   Help
                 </Link>
               </li>
@@ -81,11 +81,11 @@ const NavBar = (props) => {
                 </Link>
               </li>
             </ul>
-            <div className="hamburger__menu">
+            {/* <div className="hamburger__menu">
               <div></div>
               <div></div>
               <div></div>
-            </div>
+            </div> */}
           </div>
         </nav>
       ) : (

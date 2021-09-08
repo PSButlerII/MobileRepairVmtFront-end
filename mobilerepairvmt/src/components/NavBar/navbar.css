@@ -46,11 +46,11 @@
      
 }
 
-@media(max-width:960px){
+/* @media(max-width:960px){
     .navbar-nav> li>a{
         display:none;
     }
     .hamburger__menu{
         display:flex;
     }
-}
+} */

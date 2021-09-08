@@ -44,7 +44,7 @@ const ProfileView = (props) => {
               <th>Address</th>
               <th>Email</th>
               <th>Phone Number</th>
-              <th>Is Owner?</th>
+              
               {/* <th>Vehicles in Maintenance</th> */}
             </tr>
             <tr></tr>
@@ -59,7 +59,7 @@ const ProfileView = (props) => {
                   <td>{user.address}</td>
                   <td>{user.email}</td>
                   <td>{user.phoneNumber}</td>
-                  <td>{user.isOwner}</td>
+                  <td>{user.ownerStatus}</td>
                 </tr>
               );
             })}

@@ -12,14 +12,14 @@ const ItemMap = ({ item, addToCart }) => {
           alt="..."
         />
         <div className="card-body">
-          <h5 className="card-title">{item.name}</h5>
+          <h2 className="card-title">{item.name}</h2>
           <h4 className="item price" style={{color:"red"}} >${item.price}</h4>
           <p className="card-text">
             {item.description}
             
           </p>
           <button className="btn btn-primary" onClick={() => addToCart(item,history)}>
-            Add To Cart
+            Add To Car2
           </button>
         </div>
       </div>
