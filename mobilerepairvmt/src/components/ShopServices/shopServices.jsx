@@ -1,20 +1,17 @@
 import React from "react";
 
-
-
 const DisplayService = (props) => {
-  
   const filterServices = props.services.filter(
     (services) =>
       services.name.toLowerCase() ||
-      services.description.toLowerCase()||
+      services.description.toLowerCase() ||
       services.price.toLowerCase()
   );
   console.log(filterServices);
   return (
     <React.Fragment>
       <h1>Services</h1>
-      
+
       <table responsive className="table table-striped">
         <thead>
           <tr></tr>

@@ -7,7 +7,7 @@ const Home = () => {
         <h1> MOBILE REPAIR VMT</h1>
       </div>
       <h5>
-        WELCOME TO MOBILE VMT. WERE YOU CAN CHOOSE TO DIY, OR HAVE OUR SERVICE
+        WELCOME TO MOBILE VMT. A HOBBYSHOP WERE YOU CAN CHOOSE TO DIY, OR HAVE OUR SERVICE
         DO THE DIRTY WORK FOR YOU.
       </h5>
       <div

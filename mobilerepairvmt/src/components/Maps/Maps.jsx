@@ -129,7 +129,7 @@ class Map extends Component {
   };
   /**
    * And function for city,state and address input
-   * @param event
+   * 
    */
   onChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -137,7 +137,7 @@ class Map extends Component {
   /**
    * This Event triggers when the marker window is closed
    *
-   * @param event
+   * 
    */
   onInfoWindowClose = (event) => {};
 
@@ -146,7 +146,7 @@ class Map extends Component {
    * Use geocode to get the address, city, area and state from the lat and lng positions.
    * And then set those values in the state.
    *
-   * @param event
+    
    */
   onMarkerDragEnd = (event) => {
     let newLat = event.latLng.lat(),
@@ -274,7 +274,7 @@ class Map extends Component {
                 name="city"
                 className="form-control"
                 onChange={this.onChange}
-                readOnly="readOnly"
+                // readOnly="readOnly"
                 value={this.state.city}
               />
             </div>
@@ -285,7 +285,7 @@ class Map extends Component {
                 name="area"
                 className="form-control"
                 onChange={this.onChange}
-                readOnly="readOnly"
+                // readOnly="readOnly"
                 value={this.state.area}
               />
             </div>
@@ -296,7 +296,7 @@ class Map extends Component {
                 name="state"
                 className="form-control"
                 onChange={this.onChange}
-                readOnly="readOnly"
+                // readOnly="readOnly"
                 value={this.state.state}
               />
             </div>
@@ -307,7 +307,7 @@ class Map extends Component {
                 name="address"
                 className="form-control"
                 onChange={this.onChange}
-                readOnly="readOnly"
+                // readOnly="readOnly"
                 value={this.state.address}
               />
             </div>

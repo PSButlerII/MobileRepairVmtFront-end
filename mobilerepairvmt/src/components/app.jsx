@@ -5,7 +5,7 @@ import {
   Redirect,
   Route,
   Switch,
-  useHistory,
+  
 } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,16 +13,19 @@ import Login from "./Login/login";
 import NavBar from "./NavBar/navbar";
 import Register from "./Register/register";
 import Home from "./Home/home";
-import DisplayService from "./ShopServices/shopServices";
+// import DisplayService from "./ShopServices/shopServices";
 import Lti from "./DisplayLTI/longFormLti";
 import ProfileView from "./Customer Profile/myProfile";
-import Calendar from "./Calendar/calendar";
+// import Calendar from "./Calendar/calendar";
 import "./app.css";
 import ItemCard from "./shoppingCart/ItemCard";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
-import ReviewForm from "./reviewForm/reviewForm";
+// import ReviewForm from "./reviewForm/reviewForm";
 import MapView from "./Maps/MapView";
 import MainChatApp from "./ChatBox/MainChatApp";
+import Calendar from "./Scheduler/components/calendar";
+import ServiceCard from "./shoppingCart/ServiceCard";
+import DisplayLTI from "./DisplayLTI/LTIViews/CustomerLTIView/CustomerLTIViewer";
 
 class App extends Component {
   constructor(props) {
@@ -42,7 +45,7 @@ class App extends Component {
       redirect: null,
       isLoggedIn: false,
       ownerStatus: false,
-      Lti: [],
+      EmployeeLti:[],      
       CustomerLti: [],
       allUsers: [],
     };
@@ -52,6 +55,8 @@ class App extends Component {
     this.getAllServices();
     this.getAllReviews();
     this.checkOwnerStatus();
+    this.getAllCustomerLtis();
+    this.getAllEmployeeLtis();
 
     const jwt = localStorage.getItem("token");
     try {
@@ -175,7 +180,7 @@ class App extends Component {
     var res = await axios(`https://localhost:44394/api/EmployeeLTI`);
     var tempLTI = res.data;
     return this.setState({
-      CustomerLti: [tempLTI],
+      EmployeeLti: [tempLTI],
     });
   };
   createEmployeeLti = async (event) => {
@@ -234,6 +239,7 @@ class App extends Component {
     //   });
     // }
   };
+  
 
   deleteFromCart = async (index, router) => {
     // let tempCart = this.state.shoppingCart.filter((item) => incomingItem !== incomingItem[index])
@@ -306,7 +312,7 @@ class App extends Component {
               path="/ShopServices"
               exact
               render={(props) => (
-                <DisplayService
+                <ServiceCard
                   {...props}
                   services={this.state.services}
                   addToCart={this.addToCart}
@@ -318,7 +324,7 @@ class App extends Component {
                 path="/CreateLTI"
                 exact
                 render={(props) => (
-                  <Lti {...props} createCustomerLti={this.createCustomerLti} />
+                  <Lti {...props} createCustomerLti={this.createEmployeeLti} />
                 )}
               />
             ) : (
@@ -326,7 +332,7 @@ class App extends Component {
                 path="/CreateEmployeeLTI"
                 exact
                 render={(props) => (
-                  <Lti {...props} createEmployeeLti={this.createEmployeeLti} />
+                  <Lti {...props} createEmployeeLti={this.createEmployeeLti}/>
                 )}
               />
             )}
@@ -338,6 +344,17 @@ class App extends Component {
                   {...props}
                   users={this.state.userInfo}
                   isOwner={this.checkOwnerStatus}
+                  
+                />
+              )}
+            />
+            <Route
+              path="/MyLTIs"
+              exact
+              render={(props) => (
+                <DisplayLTI
+                  {...props}                  
+                  CustomerLti={this.state.CustomerLti}
                 />
               )}
             />

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Redirect } from "react-router";
-import useForm from "../UseForm/useFormRating";
+import useForm from "../UseForm/useForm.jsx";
 
 
 
@@ -36,7 +36,7 @@ const Lti = (props) => {
                           onChange={handleChange}
                           values={values.typeOfVehicle}
                         />
-                        <label for="floatingInput">TypeOfVehicle</label>
+                        <label for="floatingInput">Type Of Vehicle</label>
                       </div>
                       <div className="form-floating">
                         <input
@@ -48,7 +48,7 @@ const Lti = (props) => {
                           onChange={handleChange}
                           values={values.vehicleYear}
                         />
-                        <label for="floatingvehicleYear">vehicleYear</label>
+                        <label for="floatingvehicleYear">Vehicle Year</label>
                       </div>
                       <div className="form-floating">
                         <input
@@ -60,7 +60,7 @@ const Lti = (props) => {
                           onChange={handleChange}
                           values={values.vehicleMake}
                         />
-                        <label for="floatingvehicleMake">vehicleMake</label>
+                        <label for="floatingvehicleMake">Vehicle Make</label>
                       </div>
                       <div className="form-floating">
                         <input
