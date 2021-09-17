@@ -279,7 +279,7 @@ class Calendar extends Component {
             eventToEdit={eventToEdit}
           />
         )}
-        {this.rendeChangeLanguageButtons()}
+        {/* {this.rendeChangeLanguageButtons()} */}
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}

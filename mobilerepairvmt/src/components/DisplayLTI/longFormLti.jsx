@@ -17,7 +17,7 @@ const Lti = (props) => {
     return (
       <React.Fragment>
         <div className="container ">
-          <div>
+          <div >
             <div className="block">
               <div>
                 <form onSubmit={handleSubmit}>
@@ -635,7 +635,7 @@ const Lti = (props) => {
                         className="w-10 btn btn-lg btn-primary"
                         type="submit"
                       >
-                        Sumbit
+                        Submit
                       </button>
                       <p className="mt-5 mb-3 text-muted">© 2021</p>
                     </div>

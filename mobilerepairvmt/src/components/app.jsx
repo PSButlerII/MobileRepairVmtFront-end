@@ -53,17 +53,22 @@ class App extends Component {
   componentDidMount() {
     this.getAllItems();
     this.getAllServices();
-    this.getAllReviews();
-    this.checkOwnerStatus();
     this.getAllCustomerLtis();
+    this.checkOwnerStatus();    
     this.getAllEmployeeLtis();
 
     const jwt = localStorage.getItem("token");
     try {
       const users = jwtDecode(jwt);
       this.setState({ users });
+console.log(this.state.ownerStatus);
+console.log(this.state.CustomerLti);
+console.log(this.state.EmployeeLti);
+console.log(this.state.services);
+console.log(this.state.userInfo);
+console.log(this.state.allUsers);
 
-      console.log(users.id);
+      console.log(this.state.users.id);
     } catch {}
   }
 
@@ -170,17 +175,24 @@ class App extends Component {
     });
   };
   getAllCustomerLtis = async (event) => {
-    var res = await axios(`https://localhost:44394/api/customerLTI`);
+    var res = await axios.get(`https://localhost:44394/api/customerLTI`);
     var tempLTI = res.data;
+    console.log(res.data);
     return this.setState({
-      CustomerLti: [tempLTI],
+      CustomerLti: tempLTI,
     });
+    
   };
+  
   getAllEmployeeLtis = async (event) => {
-    var res = await axios(`https://localhost:44394/api/EmployeeLTI`);
+    const jwt = localStorage.getItem("token");
+    var res = await axios(`https://localhost:44394/api/EmployeeLTI`, {
+      headers: { Authorization: "Bearer " + jwt },
+    });
     var tempLTI = res.data;
+    console.log(res.data);
     return this.setState({
-      EmployeeLti: [tempLTI],
+      EmployeeLti:tempLTI,
     });
   };
   createEmployeeLti = async (event) => {
@@ -269,6 +281,7 @@ class App extends Component {
     return (
       <React.Fragment>
         {console.log(this.state.services)}
+        {console.log(this.state.CustomerLti)}
         <NavBar
           isLoggedIn={this.state.isLoggedIn}
           shoppingCart={this.state.shoppingCart}
@@ -324,7 +337,7 @@ class App extends Component {
                 path="/CreateLTI"
                 exact
                 render={(props) => (
-                  <Lti {...props} createCustomerLti={this.createEmployeeLti} />
+                  <Lti {...props} createCustomerLti={this.createCustomerLti} />
                 )}
               />
             ) : (
@@ -332,7 +345,7 @@ class App extends Component {
                 path="/CreateEmployeeLTI"
                 exact
                 render={(props) => (
-                  <Lti {...props} createEmployeeLti={this.createEmployeeLti}/>
+                  <Lti {...props} createEmployeeLti={this.createEmployeeLti} />
                 )}
               />
             )}
@@ -344,7 +357,6 @@ class App extends Component {
                   {...props}
                   users={this.state.userInfo}
                   isOwner={this.checkOwnerStatus}
-                  
                 />
               )}
             />
@@ -353,8 +365,9 @@ class App extends Component {
               exact
               render={(props) => (
                 <DisplayLTI
-                  {...props}                  
+                  {...props}
                   CustomerLti={this.state.CustomerLti}
+                  getLti={this.getAllCustomerLtis}
                 />
               )}
             />

@@ -1,56 +1,9 @@
-import React from "react";
+import React,{useEffect } from "react";
 
-const DisplayLTI = (props) => {
-  const filterServices = props.CustomerLti.filter(
-    (CustomerLti) =>
-      CustomerLti.typeOfVehicle ||
-      CustomerLti.vehicleMake ||
-      CustomerLti.vehicleModel ||
-      CustomerLti.vehicleMileage ||
-      CustomerLti.vinNumber ||
-      CustomerLti.engine ||
-      CustomerLti.clutch ||
-      CustomerLti.carburetor ||
-      CustomerLti.fuelPump ||
-      CustomerLti.dieselMultiFuel ||
-      CustomerLti.turbocharger ||
-      CustomerLti.exhaustSystem ||
-      CustomerLti.coolingSystem ||
-      CustomerLti.battery ||
-      CustomerLti.distributor ||
-      CustomerLti.alternator ||
-      CustomerLti.lights ||
-      CustomerLti.regulator ||
-      CustomerLti.wiring ||
-      CustomerLti.transmission ||
-      CustomerLti.transferCase ||
-      CustomerLti.driveShaft ||
-      CustomerLti.frontAxle ||
-      CustomerLti.parkingBrake ||
-      CustomerLti.serviceBrake ||
-      CustomerLti.airSystem ||
-      CustomerLti.tires ||
-      CustomerLti.wheels ||
-      CustomerLti.steeringGear ||
-      CustomerLti.hydraulicSystem ||
-      CustomerLti.frame ||
-      CustomerLti.towingConnection ||
-      CustomerLti.shockAbsorbers ||
-      CustomerLti.springs ||
-      CustomerLti.fender ||
-      CustomerLti.hood ||
-      CustomerLti.body ||
-      CustomerLti.cabin ||
-      CustomerLti.vehicleFloor ||
-      CustomerLti.glass ||
-      CustomerLti.interiorTrim ||
-      CustomerLti.seatsAndUpholster ||
-      CustomerLti.vehicleAccessories ||
-      CustomerLti.instrumentCluster ||
-      CustomerLti.dateOfInspection ||
-      CustomerLti.remarks
-  );
-  console.log(filterServices);
+const DisplayLTI = ({ CustomerLti, getLti }) => {
+  useEffect(()=>{
+    getLti()
+  }, [])
   return (
     <React.Fragment>
       <h1>My LTI's</h1>
@@ -60,7 +13,9 @@ const DisplayLTI = (props) => {
           <tr></tr>
           <tr>
             <th>Type Of Vehicle</th>
+            <th>Vehicle Year</th>
             <th>Vehicle Make</th>
+            <th>Vehicle Model</th>
             <th>Vehicle Mileage</th>
             <th>Vin Number</th>
             <th>Engine</th>
@@ -81,14 +36,6 @@ const DisplayLTI = (props) => {
             <th>Transfer Case</th>
             <th>Drive Shaft</th>
             <th>Front Axle</th>
-          </tr>
-          <tr></tr>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <tr></tr>
-          <tr>
             <th>Parking Brake</th>
             <th>Service Brake</th>
             <th>Air System</th>
@@ -111,22 +58,16 @@ const DisplayLTI = (props) => {
             <th>Vehicle Accessories</th>
             <th>Instrument Cluster</th>
             <th>Date Of Inspection</th>
-          </tr>
-          <tr></tr>
-          <br></br>
-          <br></br>
-          <br></br>
-          <tr></tr>
-          <tr>
             <th>Remarks</th>
           </tr>
           <tr></tr>
         </thead>
         <tbody>
-          {filterServices.map((lti) => {
+          {CustomerLti.map((lti) => {
             return (
-              <tr key={lti.Id}>
+              <tr key={lti.CustomerLtiId}>
                 <td>{lti.typeOfVehicle}</td>
+                <td>{lti.vehicleYear}</td>
                 <td>{lti.vehicleMake}</td>
                 <td>{lti.vehicleModel}</td>
                 <td>{lti.vehicleMileage}</td>
@@ -172,13 +113,6 @@ const DisplayLTI = (props) => {
                 <td>{lti.instrumentCluster}</td>
                 <td>{lti.dateOfInspection}</td>
                 <td>{lti.remarks}</td>
-
-                <td>
-                  {/* <button onClick={() => props.addToCart(service)}>
-                    Add to Cart
-                  </button> */}
-                </td>
-                <td></td>
               </tr>
             );
           })}
