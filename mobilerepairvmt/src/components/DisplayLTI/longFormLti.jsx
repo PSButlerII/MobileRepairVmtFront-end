@@ -3,8 +3,6 @@ import { useState } from "react";
 import { Redirect } from "react-router";
 import useForm from "../UseForm/useForm.jsx";
 
-
-
 const Lti = (props) => {
   const { values, handleChange, handleSubmit } = useForm(addLti);
   const [willRedirect, setWillRedirect] = useState(false);
@@ -16,8 +14,8 @@ const Lti = (props) => {
   if (willRedirect === false) {
     return (
       <React.Fragment>
-        <div className="container ">
-          <div >
+        <div className="card-group">
+          <div className="col-11 col-md-5 col-lg-10 row">
             <div className="block">
               <div>
                 <form onSubmit={handleSubmit}>
@@ -53,7 +51,7 @@ const Lti = (props) => {
                       <div className="form-floating">
                         <input
                           name="vehicleMake"
-                          type=""
+                          type="string"
                           className="form-control"
                           id="floatingvehicleMake"
                           placeholder="vehicleMake"
@@ -65,14 +63,14 @@ const Lti = (props) => {
                       <div className="form-floating">
                         <input
                           name="vehicleModel"
-                          type=""
+                          type="string"
                           className="form-control"
                           id="floatingvehicleModel"
                           placeholder="vehicleModel"
                           onChange={handleChange}
                           values={values.vehicleModel}
                         />
-                        <label for="floatingvehicleModel">vehicleModel</label>
+                        <label for="floatingvehicleModel">Vehicle Model</label>
                       </div>
                       <div className="form-floating">
                         <input
@@ -85,13 +83,14 @@ const Lti = (props) => {
                           values={values.vehicleMileage}
                         />
                         <label for="floatingvehicleMileage">
+                         
                           vehicleMileage
                         </label>
                       </div>
                       <div className="form-floating">
                         <input
                           name="vinNumber"
-                          type="number"
+                          type=""
                           className="form-control"
                           id="floatingvinNumber"
                           placeholder="0"
@@ -154,12 +153,12 @@ const Lti = (props) => {
                           type=""
                           className="form-control"
                           id="floatingdieselMultiFuel"
-                          placeholder=""
+                          placeholder="N/A"
                           onChange={handleChange}
                           values={values.dieselMultiFuel}
                         />
                         <label for="floatingdieselMultiFuel">
-                          dieselMultiFuel
+                          DieselMultiFuel
                         </label>
                       </div>
                       <div className="form-floating">
@@ -192,7 +191,7 @@ const Lti = (props) => {
                           type=""
                           className="form-control"
                           id="floatingcoolingSystem"
-                          placeholder=""
+                          placeholder="cooling System"
                           onChange={handleChange}
                           values={values.coolingSystem}
                         />
@@ -226,8 +225,10 @@ const Lti = (props) => {
                         <label for="floatingdistributor">distributor</label>
                       </div>
                     </div>
+
                     <div className="top-center">
                       <br></br>
+
                       <div className="form-floating">
                         <input
                           name="alternator"
@@ -277,16 +278,16 @@ const Lti = (props) => {
                         <label for="floatingwiring">wiring</label>
                       </div>
                       <div className="form-floating">
-                        <inputtransmission
-                          name=""
+                        <input
+                          name="Transmission"
                           type=""
                           className="form-control"
                           id="floatingtransmission"
-                          placeholder="transmission"
+                          placeholder="Transmission"
                           onChange={handleChange}
                           values={values.transmission}
                         />
-                        <label for="floatingtransmission">transmission</label>
+                        <label for="floatingtransmission">Transmission</label>
                       </div>
                       <div className="form-floating">
                         <input
@@ -570,7 +571,7 @@ const Lti = (props) => {
                           type=""
                           className="form-control"
                           id="floatingvehicleAccessories"
-                          placeholder=""
+                          placeholder="Vehicle Accessories"
                           onChange={handleChange}
                           values={values.vehicleAccessories}
                         />
@@ -584,12 +585,12 @@ const Lti = (props) => {
                           type=""
                           className="form-control"
                           id="floatinginstrumentCluster"
-                          placeholder="instrumentCluster"
+                          placeholder="Instrument Cluster"
                           onChange={handleChange}
                           values={values.instrumentCluster}
                         />
                         <label for="floatinginstrumentCluster">
-                          instrumentCluster
+                          Instrument Cluster
                         </label>
                       </div>
                       <div className="form-floating">
@@ -598,12 +599,12 @@ const Lti = (props) => {
                           type="date"
                           className="form-control"
                           id="floatingdateOfInspection"
-                          placeholder="dateOfInspection"
+                          placeholder="01/01/2021"
                           onChange={handleChange}
                           values={values.dateOfInspection}
                         />
                         <label for="floatingdateOfInspection">
-                          dateOfInspection
+                          Date Of Inspection
                         </label>
                       </div>
                       <div className="form-floating">

@@ -34,11 +34,11 @@ const NavBar = (props) => {
                   My LTI's
                 </Link>
               </li>
-              {/* <li className="nav-item">
+              <li className="nav-item">
                 <Link to="/Profile" className="nav-link active">
                   Profile
                 </Link>
-              </li> */}
+              </li>
               <li className="nav-item">
                 <Link to="/Schedule" className="nav-link active">
                   Schedule

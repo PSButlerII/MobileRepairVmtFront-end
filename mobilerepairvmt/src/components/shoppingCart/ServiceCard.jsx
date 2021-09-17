@@ -9,7 +9,7 @@ const ServiceCard = ({ services, addToCart }) => {
       <div className="card-group">
         {services?.map((service) => (
           <React.Fragment key={service.ProductId}>
-            <ServiceMap service={service} addToCart={addToCart}/>
+            <ServiceMap service={service} addToCart={addToCart} />
           </React.Fragment>
         ))}
       </div>

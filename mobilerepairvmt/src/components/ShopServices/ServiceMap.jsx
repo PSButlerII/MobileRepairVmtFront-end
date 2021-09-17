@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 const ServiceMap = ({ service, addToCart }) => {
   const history = useHistory();
   return (
-    <div className="col-10 col-md-5 col-lg-3 mx-4 mb-3">
+    <div className="col-11 col-md-5 col-lg-3 mx-5 mb-3">
       <div className="card p-1 overflow-hidden h-10 shadow">
         <img
           src="images\scooter2.jpg"
