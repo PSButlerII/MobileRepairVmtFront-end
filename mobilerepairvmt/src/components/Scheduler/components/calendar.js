@@ -19,6 +19,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import {withTranslation } from "react-i18next";
 import "./calendar.css";
 
+
 const EVENT_LIMIT = 5;
 
 class Calendar extends Component {
@@ -90,9 +91,10 @@ class Calendar extends Component {
         </div>
         <div className="col col-center">
           <span>
-            {t( month, {
+            {t( month,  {
               lng: i18n.language
             })}
+            
           </span>
         </div>
         <div className="col col-end" onClick={this.nextMonth}>
