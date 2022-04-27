@@ -24,7 +24,7 @@
     "i18next": "^20.6.1",
     "jwt-decode": "^3.1.2",
     "jwt-decoder": "^0.0.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "query-string": "^4.3.4",
     "react-big-calendar": "^0.35.0",
     "react-big-calendar-teabough": "^0.23.12",
